@@ -10,7 +10,9 @@
     "base1.1": "node ./base/1_search/1.1_line_search.js",
     "base1.2": "node ./base/1_search/1.2_binary_search",
     "base2.1": "node ./base/2_sort/2.1_bubble_sort",
-    "base2.2": "node ./base/2_sort/2.2_selection_sort"
+    "base2.2": "node ./base/2_sort/2.2_selection_sort",
+    "base2.3": "node ./base/2_sort/2.3_insertion_sort",
+    "base2.4": "node ./base/2_sort/2.4_merge_sort"
 
   }
 }

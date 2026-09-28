@@ -29,5 +29,5 @@ console.log(selection_sort(nonSortedNumbersArray));
 
 // Сложность
 
-// Time:  O(n²)
+// Time:  Time:  Best O(n²), Worst O(n²)
 // Space: O(1)
