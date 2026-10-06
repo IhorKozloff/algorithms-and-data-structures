@@ -15,7 +15,8 @@
     "base2.4": "node ./base/2_sort/2.4_merge_sort",
     "base2.5": "node ./base/2_sort/2.5_quick_sort",
     "base2.6": "node ./base/2_sort/2.6_heap_sort",
-    "base3.4": "node ./base/3_data_structures/3.4_hash_table.js"
+    "base3.4": "node ./base/3_data_structures/3.4_hash_table.js",
+    "base3.5": "node ./base/3_data_structures/3.5_bst.js"
 
   }
 }
