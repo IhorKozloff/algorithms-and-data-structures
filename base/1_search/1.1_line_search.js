@@ -15,3 +15,5 @@ console.log(line_search(numbers, 73)); // 4
 console.log(line_search(numbers, 100)); // -1
 //Сложность временная О(n)
 //Сложность пространственная О(1)
+
+

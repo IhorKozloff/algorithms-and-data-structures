@@ -18,7 +18,9 @@
     "base3.4": "node ./base/3_data_structures/3.4_hash_table.js",
     "base3.5": "node ./base/3_data_structures/3.5_bst.js",
     "base3.6": "node ./base/3_data_structures/3.6_graphs.js",
-    "base3.6.1": "node ./base/3_data_structures/3.6.1_Dijkstra"
+    "base3.6.1": "node ./base/3_data_structures/3.6.1_Dijkstra",
+    "practice.1": "node ./base/practice/1.Sort_practice"
+    
 
   }
 }
