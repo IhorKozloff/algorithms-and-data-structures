@@ -19,8 +19,13 @@
     "base3.5": "node ./base/3_data_structures/3.5_bst.js",
     "base3.6": "node ./base/3_data_structures/3.6_graphs.js",
     "base3.6.1": "node ./base/3_data_structures/3.6.1_Dijkstra",
-    "practice.1": "node ./base/practice/1.Sort_practice"
+    "base.plus.1": "node ./base_plus/1.two_points.js",
+
+
+    "practice.1": "node ./base/practice/1.Sort_practice",
     
+
+    "leet1": "node ./leet_code/1.two_sum.js"
 
   }
 }
