@@ -19,7 +19,8 @@
     "base3.5": "node ./base/3_data_structures/3.5_bst.js",
     "base3.6": "node ./base/3_data_structures/3.6_graphs.js",
     "base3.6.1": "node ./base/3_data_structures/3.6.1_Dijkstra",
-    "base.plus.1": "node ./base_plus/1.two_points.js",
+    "baseplus1": "node ./base_plus/1.two_points.js",
+    "baseplus2": "node ./base_plus/2.sliding_window",
 
 
     "practice.1": "node ./base/practice/1.Sort_practice",
