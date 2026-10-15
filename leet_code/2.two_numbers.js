@@ -62,7 +62,7 @@ function addTwoNumbers(l1, l2) {
   return result
 };
 //Сложность по времени O(max(n,m)) и по памяти O(max(n,m))
-console.log(addTwoNumbers([2, 4, 3], [5, 6, 4]));
+//console.log(addTwoNumbers([2, 4, 3], [5, 6, 4]));
 
 //Для leetcode, там не  массивы а связанные списки, тип обьекта ниже
 //  * class ListNode {
@@ -74,3 +74,73 @@ console.log(addTwoNumbers([2, 4, 3], [5, 6, 4]));
 //  *     }
 //  * }
 
+function addTwoNumbersLinkedList(l1, l2) {
+
+  let current1 = l1;
+  let current2 = l2;
+  let cash = 0;
+  const result = [];
+
+  const sumFn = (first = 0, second = 0) => {
+    const sum = first + second + cash;
+    console.log({ first, second, cash, sum });
+    cash = 0;
+
+    if (sum > 9) {
+      cash = 1;
+      result.push(sum % 10)
+    } else {
+      result.push(sum)
+    }
+  }
+
+  while (current1 !== null || current2 !== null || cash > 0) {
+    sumFn(current1?.val ?? 0, (current2 && current2.val) ?? 0); // current1?.val ?? 0 тоже самое что (current2 && current2.val) ?? 0
+
+    if (current1) {
+      current1 = current1.next
+    }
+    if (current2) {
+      current2 = current2.next
+    }
+  };
+  const head = {
+    val: result[0],
+    next: null
+  };
+
+  let current = head;
+  for (let i = 1; i < result.length; i++) {
+    current.next = {
+      val: result[i],
+      next: null
+    }
+    current = current.next
+  }
+
+  return head;
+
+};
+//Сложность по времени O(max(n,m)) и по памяти O(max(n,m))
+const l1 = {
+  val: 2,
+  next: {
+    val: 4,
+    next: {
+      val: 3,
+      next: null
+    }
+  }
+};
+
+const l2 = {
+  val: 5,
+  next: {
+    val: 6,
+    next: {
+      val: 4,
+      next: null
+    }
+  }
+};
+console.log(addTwoNumbersLinkedList(l1, l2));
