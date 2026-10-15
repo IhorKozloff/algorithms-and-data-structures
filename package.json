@@ -24,6 +24,7 @@
     "baseplus2.1": "node ./base_plus/2.1.variable_size_sliding_window",
     "baseplus3": "node ./base_plus/3.prefix_sum",
     "baseplus3.1": "node ./base_plus/3.1subarray_sum_equals_K",
+    "baseplus4": "node ./base_plus/4.backtracking",
 
 
     "practice.1": "node ./base/practice/1.Sort_practice",
