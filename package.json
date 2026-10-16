@@ -25,6 +25,7 @@
     "baseplus3": "node ./base_plus/3.prefix_sum",
     "baseplus3.1": "node ./base_plus/3.1subarray_sum_equals_K",
     "baseplus4": "node ./base_plus/4.backtracking",
+    "baseplus5": "node ./base_plus/5.greedy_algorithms",
 
 
     "practice.1": "node ./base/practice/1.Sort_practice",

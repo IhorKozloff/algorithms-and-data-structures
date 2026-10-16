@@ -63,7 +63,34 @@ function backtrack(path) {
 };
 
 
-backtrack(path);
-console.log('result', result)
-console.log('exec count', executNumber)
+//backtrack(path);
+// console.log('result', result)
+// console.log('exec count', executNumber)
 //console.log('result', result)
+
+////TRAINING
+const stars = ['Sirius', 'Vega', 'Polaris', 'Rigel'];
+
+const combinationPath = [];
+const catalog = [];
+
+function backtrack_stars(path) {
+    // Шаг 1: условие выхода
+    if (path.length === 3) {
+      catalog.push([...path]);
+      return;
+    }
+
+    for (const item of stars) {
+      if (path.includes(item)) {
+        console.log(`${item} есть в текущем path ${path}`);
+      } else {
+        console.log(`Такого ${item} еще нет в текущем path ${path}, добавим`);
+        path.push(item);
+        backtrack_stars(path);
+        path.pop()
+      }
+    }
+};
+backtrack_stars(combinationPath);
+console.log(catalog)
