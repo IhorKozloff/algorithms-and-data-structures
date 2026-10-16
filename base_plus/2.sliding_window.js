@@ -1,5 +1,5 @@
 
-//Найти наибольшую сумму нескольких последовательных элкментов
+//Найти наибольшую сумму нескольких последовательных элементов
 const max_sum_window = (sales, windowSize) => {
   const calculateSum = (array, start, length) => {
     let result = 0;
@@ -27,7 +27,7 @@ const max_sum_window2 = (sales, windowSize) => {
   let greatesSum = 0;
   let currentSumm = 0;
 
-  for (let i = 0; i < windowSize; i++) {
+  for (let i = 0; i < windowSize; i++) { //Посчитали за первые 3(например) дня
     greatesSum += sales[i];
   };
   currentSumm = greatesSum;

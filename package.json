@@ -32,7 +32,8 @@
     
 
     "leet1": "node ./leet_code/1.two_sum.js",
-    "leet2": "node ./leet_code/2.two_numbers"
+    "leet2": "node ./leet_code/2.two_numbers",
+    "leet3": "node ./leet_code/3.longest_substring_without_repeating_characters"
 
   }
 }
