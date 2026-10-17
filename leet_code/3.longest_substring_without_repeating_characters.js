@@ -49,12 +49,14 @@ function lengthOfLongestSubstringOn(s) {
   let right = 0;
   const uniqueTrack = new Map();
 
-  while (right < s.length || s.length - right > longestLength) {
+  while (right < s.length) {
+    //s.length - right > longestLength
+    // console.log('right', right, 'left', left, 'current symbol: ', s[right])
+    // console.log(uniqueTrack);
     if (!uniqueTrack.has(s[right])) {
-
       uniqueTrack.set(s[right], right);
-
       const currentLength = right - left + 1;
+      // console.log('Сохранили макс длинну', currentLength)
       if (currentLength > longestLength) {
         longestLength = currentLength;
       };
@@ -62,10 +64,13 @@ function lengthOfLongestSubstringOn(s) {
     } else {
 
       const deletingIndex = uniqueTrack.get(s[right]);
+      // console.log('Символ уже существует', s[right], deletingIndex)
       left = deletingIndex + 1;
+      uniqueTrack.clear();
 
-      for (let i = 0; i < left; i++) {
-        uniqueTrack.delete(s[i]);
+      for (let i = left; i <= right; i++) {
+        // console.log('deleting', s[i], i)
+        uniqueTrack.set(s[i], i);
       };
     };
 
