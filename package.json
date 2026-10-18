@@ -19,16 +19,23 @@
     "base3.5": "node ./base/3_data_structures/3.5_bst",
     "base3.6": "node ./base/3_data_structures/3.6_graphs",
     "base3.6.1": "node ./base/3_data_structures/3.6.1_Dijkstra",
-    "baseplus1": "node ./base_plus/1.two_points",
-    "baseplus2": "node ./base_plus/2.sliding_window",
-    "baseplus2.1": "node ./base_plus/2.1.variable_size_sliding_window",
-    "baseplus3": "node ./base_plus/3.prefix_sum",
-    "baseplus3.1": "node ./base_plus/3.1subarray_sum_equals_K",
-    "baseplus4": "node ./base_plus/4.backtracking",
-    "baseplus5": "node ./base_plus/5.greedy_algorithms",
+
+    "basePlus1": "node ./base_plus/1.two_points",
+    "basePlus2": "node ./base_plus/2.sliding_window",
+    "basePlus2.1": "node ./base_plus/2.1.variable_size_sliding_window",
+    "basePlus3": "node ./base_plus/3.prefix_sum",
+    "basePlus3.1": "node ./base_plus/3.1subarray_sum_equals_K",
+    "basePlus4": "node ./base_plus/4.backtracking",
+    "basePlus5": "node ./base_plus/5.greedy_algorithms",
 
 
-    "practice.1": "node ./base/practice/1.Sort_practice",
+    "practiceBase": "node ./base/practice/1.Sort_practice",
+
+    "practiceBasePlus2": "node ./base_plus/practice1-5/2.sliding-window.js",
+    "practiceBasePlus2.1": "node ./base_plus/practice1-5/2.1variable-size-sliding-window",
+    "practiceBasePlus3.1": "node ./base_plus/practice1-5/3.1subarray-sum-equals-K",
+    "practiceBasePlus4": "node ./base_plus/practice1-5/4.backtracking.js",
+    "practiceBasePlus5": "node ./base_plus/practice1-5/5.greedy_algorithms",
     
 
     "leet1": "node ./leet_code/1.two_sum.js",

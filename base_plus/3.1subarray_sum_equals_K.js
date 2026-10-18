@@ -1,3 +1,8 @@
+//Идея: Prefix Sum + Map
+
+//prefixSum = prefixSum + array[i]
+//needed = prefixSum - target
+
 const subarraySum = (nums, k) => {
   // let currentSum = 0;
   let count = 0;
@@ -40,3 +45,6 @@ const subarraySum = (nums, k) => {
 const nums = [3, 0, 0, 5, 2];
 const k = 5;
 subarraySum(nums, k)
+
+
+[1,1,1,1,1,1,1,1,1,1, 800, 487, 321, 47, 98, 554, 2, 3, 99, 100 ]
