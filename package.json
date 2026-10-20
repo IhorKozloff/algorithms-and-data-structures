@@ -28,6 +28,8 @@
     "basePlus4": "node ./base_plus/4.backtracking",
     "basePlus5": "node ./base_plus/5.greedy_algorithms",
     "basePlus6": "node ./base_plus/6.dynamic_programming",
+    "basePlus6.1": "node ./base_plus/6.1dp_unique_paths.js",
+    "basePlus6.2": "node ./base_plus/6.2dp_unique_paths_plus_obstacle.js",
 
 
     "practiceBase": "node ./base/practice/1.Sort_practice",
