@@ -30,6 +30,7 @@
     "basePlus6": "node ./base_plus/6.dynamic_programming",
     "basePlus6.1": "node ./base_plus/6.1dp_unique_paths.js",
     "basePlus6.2": "node ./base_plus/6.2dp_unique_paths_plus_obstacle.js",
+    "basePlus6.3": "node ./base_plus/6.3dp_min_path_cost.js",
 
 
     "practiceBase": "node ./base/practice/1.Sort_practice",
