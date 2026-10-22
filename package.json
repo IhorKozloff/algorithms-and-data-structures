@@ -32,6 +32,7 @@
     "basePlus6.2": "node ./base_plus/6.2dp_unique_paths_plus_obstacle.js",
     "basePlus6.3": "node ./base_plus/6.3dp_min_path_cost.js",
     "basePlus6.4": "node ./base_plus/6.4dp_knapsack",
+    "basePlus6.5": "node ./base_plus/6.5longest_common_subsequence.js",
 
 
     "practiceBase": "node ./base/practice/1.Sort_practice",
@@ -42,6 +43,7 @@
     "practiceBasePlus4": "node ./base_plus/practice1-5/4.backtracking.js",
     "practiceBasePlus5": "node ./base_plus/practice1-5/5.greedy_algorithms",
     "practiceBasePlus6": "node ./base_plus/practice1-5/6.dp",
+
     
 
     "leet1": "node ./leet_code/1.two_sum.js",
