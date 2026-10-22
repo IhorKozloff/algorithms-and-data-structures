@@ -93,6 +93,14 @@ const getLCS = (firstArr, secondArr) => {
     path
   };
 };
+// По времени
+// Создание матрицы — \(O(n \cdot m)\).
+// Заполнение матрицы — \(O(n \cdot m)\).
+// Восстановление пути — \(O(n + m)\).
+
+
+//Пространственная
+//Ну тут матрица O(n * m), массив recoveryPath в худшем случае O(min(N,M)), i и k  -константы, значит O(1). Самая большая получается за матрицу O(n*m)
 const fruitsA = ['apple', 'banana', 'orange', 'kiwi', 'grape'];
 const fruitsB = ['banana', 'apple', 'kiwi', 'mango', 'grape'];
 console.log(getLCS(fruitsA, fruitsB));
