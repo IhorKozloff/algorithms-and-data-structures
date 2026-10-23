@@ -77,6 +77,7 @@ const testCases = [
   { input: 'abacdfgdcaba', output: 3 },
   { input: 'abbaxyzyx', output: 5 },
   { input: '"aaca"', output: 3 },
+  { input: 'abcdfgdcaba', output: 3 }
 ];
 testCases.forEach((element, index) => {
   const palindrome = longest_palindromic_substring(element.input)
@@ -87,3 +88,8 @@ testCases.forEach((element, index) => {
     conclusion: `Test ${element.output === palindrome.length ? 'Passed.' : 'Failed :('}`
   });
 });
+//Несмотря на то что внутренние циклы за одну итерацию обрабатывают 2 элемента O(n/2)=O(n), это считается O(n)
+//Так же один while + 2й while это O(n + n) = O(2n) = O(n)
+//Снаружи у нас for O(n), внутри O(n). Общая сложность по времени О(n*n)
+//По памяти O(n). Мы создаем строки, и если длинна строки увеличится в 10 раз, то в худшем случае и длинна переменных увеличится в 10 раз
+
