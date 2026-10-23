@@ -1,46 +1,60 @@
 const longest_palindromic_substring = (s) => {
   const findPalindrome = (string, startIndex) => {
-    const middleSymbol = string[startIndex];
-
     if (startIndex < 0) {
       return '';
     };
 
-    if (startIndex === 0) {
-      return middleSymbol
-    };
-
-    let middleCase = 'solo';
-
+    const middleSymbol = string[startIndex];
     const nextAfterMiddleSymbol = string[startIndex + 1];
-    if (middleSymbol === nextAfterMiddleSymbol) {
-      middleCase = 'double';
+
+    let singleMiddleIndexPalindrome = middleSymbol;
+    let duoMiddleIndexPalindrome = '';
+
+    if (nextAfterMiddleSymbol && nextAfterMiddleSymbol === middleSymbol) {
+      duoMiddleIndexPalindrome = middleSymbol + nextAfterMiddleSymbol;
     };
 
-    let spredWindowSize = 1;
-    let result = middleCase === 'solo' ? middleSymbol : middleSymbol+nextAfterMiddleSymbol;
+    //На случай если центр палиндрома 2 одинаковые буквы
+    if (startIndex !== 0) {
+      let spredWindowSize = 1;
+      while (startIndex - spredWindowSize >= 0) {
+        const currentLeftIndex = startIndex - spredWindowSize;
+        let currentRightIndex = startIndex + spredWindowSize;
 
-    while (startIndex - spredWindowSize >= 0 && middleCase === 'solo' ? startIndex + spredWindowSize < string.length : startIndex + 1 + spredWindowSize < string.length) {
-
-      const currentLeftIndex = startIndex - spredWindowSize;
-      let currentRightIndex = startIndex + spredWindowSize;
-
-      if (middleCase === 'double') {
-        currentRightIndex += 1;
+        if (string[currentLeftIndex] === string[currentRightIndex]) {
+          singleMiddleIndexPalindrome = string.slice(currentLeftIndex, currentRightIndex + 1);
+          spredWindowSize += 1;
+        } else {
+          break;
+        };
       };
 
-      if (string[currentLeftIndex] === string[currentRightIndex]) {
-        result = string.slice(currentLeftIndex, currentRightIndex + 1);
-        spredWindowSize += 1;
-      } else {
-        break;
-      };
+      if (duoMiddleIndexPalindrome.length !== 0) {
+        let spredWindowSizeForDuo = 1;
+        while (startIndex - spredWindowSizeForDuo >= 0) {
+          const currentLeftIndex = startIndex - spredWindowSizeForDuo;
+          let currentRightIndex = startIndex + 1 + spredWindowSizeForDuo;
+
+          if (string[currentLeftIndex] === string[currentRightIndex]) {
+            duoMiddleIndexPalindrome = string.slice(currentLeftIndex, currentRightIndex + 1);
+            spredWindowSizeForDuo += 1;
+          } else {
+            break;
+          };
+        };
+      }
+
     }
 
-    return result;
+    if (singleMiddleIndexPalindrome.length === duoMiddleIndexPalindrome.length) {
+      return singleMiddleIndexPalindrome;
+    } else {
+      return singleMiddleIndexPalindrome.length > duoMiddleIndexPalindrome.length ? singleMiddleIndexPalindrome : duoMiddleIndexPalindrome;
+    }
   };
 
   let result = '';
+
   for (let i = 0; i < s.length; i++) {
     const palindrome = findPalindrome(s, i);
 
@@ -62,13 +76,14 @@ const testCases = [
   { input: 'aaaa', output: 4 },
   { input: 'abacdfgdcaba', output: 3 },
   { input: 'abbaxyzyx', output: 5 },
+  { input: '"aaca"', output: 3 },
 ];
 testCases.forEach((element, index) => {
-  const length = longest_palindromic_substring(element.input)
+  const palindrome = longest_palindromic_substring(element.input)
   console.log({
     case: index + 1,
     expect: element.output,
-    result: length,
-    conclusion: `Test ${element.output === length ? 'Passed.' : 'Failed :('}`
+    result: palindrome,
+    conclusion: `Test ${element.output === palindrome.length ? 'Passed.' : 'Failed :('}`
   });
 });
