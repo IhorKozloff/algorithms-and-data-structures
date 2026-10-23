@@ -41,11 +41,28 @@ const test_graph = {
 //   Временная сложность O(V+ E)}
 // - Вершин (V = 4): A, B, C, D.
 // - Рёбер (E = 3): A—B, A—C, B—D.
-console.log(dfs(test_graph, 'A'))
+//console.log(dfs(test_graph, 'A'))
 
 //////////////////////////////////////// BSF /////////////////////////////////////////
 const bfs = (graph, startKey) => {
-  
+  const queue = [startKey];
+  const result = [startKey];
+  const visited = new Set();
+  visited.add(startKey);
+
+  while (queue.length !== 0) {
+    const currentItemKey = queue.shift();
+    const currentItemNeighborsArray = graph[currentItemKey];
+
+    for (const item of currentItemNeighborsArray) {
+      if (!visited.has(item)) {
+        queue.push(item);
+        visited.add(item);
+        result.push(item);
+      };
+    }
+  }
+  return result;
 };
 const test_graph2 = {
   A: ['B', 'C'],
@@ -56,3 +73,6 @@ const test_graph2 = {
   F: ['C'],
 };
 console.log(bfs(test_graph2, 'A'))
+
+
+///
