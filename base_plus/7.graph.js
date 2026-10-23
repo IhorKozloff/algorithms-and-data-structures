@@ -72,7 +72,68 @@ const test_graph2 = {
   E: ['B'],
   F: ['C'],
 };
-console.log(bfs(test_graph2, 'A'))
+//console.log(bfs(test_graph2, 'A'))
 
 
-///
+/// ---- Поиск кратчаейшего пути в невзвешенном графе -------------------
+// Ищем кратчайший путь от А до G
+//первый найденный путь уже кратчайший для невзвешенного графа.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+const shortest_way = (graph, startKey, endPointKey) => {
+  const queue = [startKey];
+
+  const visited = new Map();  // храним пары, где ключ врешина: родитель(значение)
+  visited.set(startKey, null);
+
+  let found = startKey === endPointKey; /// Флаг для логики - Если нашли точку, то прервать и не обходить остальные вершины. И заодно на случай если старт равен финишу
+
+  while (queue.length !== 0 && found === false) {
+    const currentItemKey = queue.shift();
+    const currentItemNeighborsArray = graph[currentItemKey];
+
+    for (const item of currentItemNeighborsArray) {
+      if (!visited.has(item)) {
+        queue.push(item);
+        visited.set(item, currentItemKey);
+        if (item === endPointKey) {
+          found = true;
+          break
+        }
+      };
+    }
+  }
+
+  const createPath = () => {
+    const result = [];
+    if (!visited.has(endPointKey)) return;
+
+    let current = endPointKey;
+
+    while (current !== null) {
+      result.push(current);
+      const nextParrent = visited.get(current);
+      current = nextParrent;
+    };
+
+    return result.reverse(); 
+  }
+  const path = createPath();
+  return path;
+};
+const test_graph3 = {
+  A: ['B', 'C'],
+  B: ['A', 'D', 'E'],
+  C: ['A', 'F'],
+  D: ['B', 'G'],
+  E: ['B', 'G'],
+  F: ['C', 'G'],
+  G: ['D', 'E', 'F'],
+};
+// while (queue.length !== 0 && found === false) { Тут мы не знаем сколько итераци будет, по етому обсудим худгий случай, а это столько сколько вершин O(n)
+//const currentItemKey = queue.shift(); тут я не хочу захламлять логикой с плавающим индексом, но как бкд то она есть, по етому O(1);
+//for (const item of currentItemNeighborsArray) { Этот цикл к-во ребер * 2 итераций максимум.
+//createPath в худшем случае O(n);
+//Итого временная сложность O(n + K)! именно +
+console.log(bfs(test_graph3, 'A'))
