@@ -86,19 +86,58 @@ class PriorityQueue {
 const initializeDistancesState = (data, startKey) => {
   const distances = new Map();// { G: {value: 17, parent: C}, B: {value: 9, parent: A} } 
   for (const key in data) {
-    distances.set(key, Infinity);
+    distances.set(key, { value: Infinity, parent: null });
   };
-  distances.set(startKey, 0);
+  distances.set(startKey, { value: 0, parent: null });
   return distances;
 };
 
-const shortest_way_dijkstra = (graph, entryPointKey) => {
+const shortest_way_dijkstra = (graph, entryPointKey, endPointKey) => {
   const visited = new Set(); //вершина считается визитед если мы в нее пришли и обработали ее соседей
   const distances = initializeDistancesState(graph, entryPointKey);
 
-  console.log(distances)
-  let result;
-  return result;
+  const queue = new PriorityQueue();
+  queue.enqueue(entryPointKey, 0);
+
+  while (queue.isEmpty() !== true) {
+    const currentVertex = queue.dequeue();
+    if (visited.has(currentVertex.key)) {
+      continue;
+    };
+
+    visited.add(currentVertex.key);
+
+    const currentVertexDistanceData = distances.get(currentVertex.key);
+    const neighborsList = graph[currentVertex.key];
+
+    for (const neighbour of neighborsList) {
+
+      const currentNeighbourDistanceSum = currentVertexDistanceData.value + neighbour.weight;
+      const neighbourDistanceRecord = distances.get(neighbour.vertex);
+
+      const newRecord = {
+        value: currentNeighbourDistanceSum,
+        parent: currentVertex.key
+      };
+
+      if (currentNeighbourDistanceSum < neighbourDistanceRecord.value) {
+        distances.set(neighbour.vertex, newRecord);
+        queue.enqueue(neighbour.vertex, currentNeighbourDistanceSum);
+      }
+    }
+  }
+
+  let path = [];
+  let current = endPointKey;
+  while (current !== null) {
+    const currentData = distances.get(current);
+    path.push(current);
+    current = currentData.parent;
+  };
+  return {
+    distances,
+    path: path.reverse()
+  }
 };
 
 const graph = {
@@ -149,49 +188,60 @@ const graph = {
     { vertex: 'H', weight: 7 },
   ],
 };
-console.log(shortest_way_dijkstra(graph, 'A'));
+console.log('shortest_way_dijkstra', shortest_way_dijkstra(graph, 'A', 'G'));
 
+// 2. Что произойдёт, если путь не существует?
+// Представь, что ты передашь несуществующую вершину или вершину, до которой нет пути из стартовой. Тогда distances.get(current) может вернуть undefined либо запись с value: Infinity и parent: null.
 
+// Сейчас при несуществующей вершине обращение к currentData.parent вызовет ошибку. А если вершина существует, но недостижима, функция вернёт путь из одной вершины, хотя реального пути нет.
+
+// Нужно предусмотреть эти случаи до восстановления пути.
+// Твоя следующая задача
+// Добавь проверку, которая определяет, достижима ли endPointKey из entryPointKey.
+
+// Подсказка: посмотри на поле value конечной вершины в distances. Если оно осталось Infinity, путь не найден.
+
+// Не переписывай функцию целиком — добавь проверку и пришли изменённый фрагмент.
 
 
 ///-------------PriorityQueue tests -----------------
-const pq = new PriorityQueue();
+// const pq = new PriorityQueue();
 
-// 1. Проверяем начальное состояние
-console.log('Initially empty:', pq.isEmpty()); // true
+// // 1. Проверяем начальное состояние
+// console.log('Initially empty:', pq.isEmpty()); // true
 
-// 2. Добавляем элементы с разными приоритетами
-pq.enqueue('A', 8);
-pq.enqueue('B', 3);
-pq.enqueue('C', 10);
-pq.enqueue('D', 1);
-pq.enqueue('E', 6);
+// // 2. Добавляем элементы с разными приоритетами
+// pq.enqueue('A', 8);
+// pq.enqueue('B', 3);
+// pq.enqueue('C', 10);
+// pq.enqueue('D', 1);
+// pq.enqueue('E', 6);
 
-// 3. Проверяем, что очередь не пустая
-console.log('After enqueue:', pq.isEmpty()); // false
+// // 3. Проверяем, что очередь не пустая
+// console.log('After enqueue:', pq.isEmpty()); // false
 
-// 4. Извлекаем все элементы
-const results = [];
+// // 4. Извлекаем все элементы
+// const results = [];
 
-while (!pq.isEmpty()) {
-    results.push(pq.dequeue());
-}
+// while (!pq.isEmpty()) {
+//   results.push(pq.dequeue());
+// }
 
-console.log('Extracted:', results);
+// console.log('Extracted:', results);
 
-// Ожидаемый порядок:
-// D (1), B (3), E (6), A (8), C (10)
+// // Ожидаемый порядок:
+// // D (1), B (3), E (6), A (8), C (10)
 
-// 5. Проверяем, что очередь снова пуста
-console.log('After dequeue:', pq.isEmpty()); // true
+// // 5. Проверяем, что очередь снова пуста
+// console.log('After dequeue:', pq.isEmpty()); // true
 
-// 6. Проверяем извлечение из пустой очереди
-console.log('Empty dequeue:', pq.dequeue()); // undefined
+// // 6. Проверяем извлечение из пустой очереди
+// console.log('Empty dequeue:', pq.dequeue()); // undefined
 
-// 7. Проверяем очередь с одним элементом
-pq.enqueue('X', 5);
+// // 7. Проверяем очередь с одним элементом
+// pq.enqueue('X', 5);
 
-console.log('Single element:', pq.dequeue());
-// { key: 'X', priority: 5 }
+// console.log('Single element:', pq.dequeue());
+// // { key: 'X', priority: 5 }
 
-console.log('After single dequeue:', pq.isEmpty()); // true
+// console.log('After single dequeue:', pq.isEmpty()); // true
