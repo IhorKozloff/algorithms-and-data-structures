@@ -1,10 +1,13 @@
 const zigzag_conversion = (s, numRows) => {
-  const newRow = new Array(s.length).fill(null);
-  const matrix = [];
-  for (let i = 0; i < numRows; i++) {
-    matrix.push([...newRow]);
-  };
+  if (numRows <= 1) return s;
 
+  const newRow = new Array(s.length).fill(null); // По времени O(n), по памяти O(n)
+  const matrix = [];
+  for (let i = 0; i < numRows; i++) { // По времени O(k) где k numRows 
+    matrix.push([...newRow]);// По времени O(n) за спред массива, по памяти создаем массив который O(n) k раз,
+  };
+  //k итераций, и на каждой спред массива длинной n = O(n*k), по памяти тоже n = O(n*k)
+//------------------------------------------------
   let stringIndex = 0;
 
   let widthIndex = 0;
@@ -12,7 +15,7 @@ const zigzag_conversion = (s, numRows) => {
 
   let direction = 1;
 
-  while (stringIndex < s.length) {
+  while (stringIndex < s.length) { // O(n)
     const setUpIndexesForNextSymbol = () => {
       if (widthIndex === 0 && hightIndex === 0) {
         hightIndex = 1;
@@ -37,9 +40,9 @@ const zigzag_conversion = (s, numRows) => {
     };
 
     const currentSymbol = s[stringIndex];
-    // console.log('--------------------')
-    // console.log(`matrix[${[hightIndex]}][${widthIndex}]`, matrix[hightIndex][widthIndex], 'Запишем сюда', 'currentSymbol', currentSymbol)
-    // console.log('--------------------')
+    console.log('--------------------')
+    console.log(`matrix[${[hightIndex]}][${widthIndex}]`, matrix[hightIndex][widthIndex], 'Запишем сюда', 'currentSymbol', currentSymbol)
+    console.log('--------------------')
     matrix[hightIndex][widthIndex] = currentSymbol;
 
     setUpIndexesForNextSymbol();
@@ -48,8 +51,8 @@ const zigzag_conversion = (s, numRows) => {
 
 
 
-  let result = '';
-  for (let i = 0; i < matrix.length; i++) {
+  let result = ''; //По памяти O(n)
+  for (let i = 0; i < matrix.length; i++) {// Тут перебрать всю матрицу, значит тоже O(n*k)
     for (let k = 0; k < matrix[0].length; k++) {
       if (matrix[i][k]) {
         result += matrix[i][k]
@@ -86,6 +89,11 @@ const testCases = [
     numRows: 2,
     expected: 'ACEBD',
   },
+  {
+    input: 'AB',
+    numRows: 1,
+    expected: 'AB',
+  },
 ];
 testCases.forEach((element, index) => {
   const result = zigzag_conversion(element.input, element.numRows);
@@ -97,3 +105,5 @@ testCases.forEach((element, index) => {
     conclusion: `Test ${element.expected === result ? 'Passed.' : 'Failed :('}`
   });
 });
+// ПО времени O(n*k) где n-длинна строки, k-кво
+// По памяти тоже O(n*k)
