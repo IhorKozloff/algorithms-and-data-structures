@@ -1,3 +1,4 @@
+import { tester } from './tester.js';
 // You are given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 // You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -9,7 +10,7 @@
 // Example 1:
 
 
-const two_sum = (arr, targetNum) => {
+const two_sum = ({ nums: arr, target: targetNum }) => {
 
   const value = 0;
   const index = 1;
@@ -34,12 +35,12 @@ const two_sum = (arr, targetNum) => {
 // поиск двумя указателями O(n)
 
 // Дополнительная память: O(n) — в худшем случае храним почти все элементы.
-const two_sum2 = (arr, targetNum) => {
+const two_sum2 = ({ nums: arr, target: targetNum }) => {
 
   const history = new Map();
 
   for (let i = 0; i < arr.length; i++) {
-    console.log(i)
+    //console.log(i)
     const rest = targetNum - arr[i];
 
     if (history.has(rest)) {
@@ -55,22 +56,21 @@ const two_sum2 = (arr, targetNum) => {
 // Дополнительная память: O(n) — в худшем случае храним почти все элементы.
 const testData = [
   {
-    nums: [2, 14, 11, 7, 15, 71, 24],
-    target: 9,
-    result: [0, 1]
+    case_number: 1,
+    input: { nums: [2, 14, 11, 7, 15, 71, 24], target: 9 },
+    expect: [0, 3]
   },
 
-  // {
-  //   nums: [3, 2, 4],
-  //   target: 6,
-  //   result: [1, 2]
-  // },
-  // {
-  //   nums: [3, 3],
-  //   target: 6,
-  //   result: [0, 1]
-  // }
+  {
+    case_number: 2,
+    input: { nums: [3, 2, 4], target: 6 },
+    expect: [1, 2]
+  },
+  {
+    case_number: 2,
+    input: { nums: [3, 3], target: 6 },
+    expect: [0, 1]
+  }
 ]
-testData.forEach(element => {
-  console.log(two_sum2(element.nums, element.target))
-});
+//tester(testData, two_sum)
+tester(testData, two_sum2)

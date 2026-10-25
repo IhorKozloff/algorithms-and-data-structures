@@ -1,4 +1,6 @@
-const zigzag_conversion = (s, numRows) => {
+import {tester} from './tester.js';
+
+const zigzag_conversion = ({s, numRows}) => {
   if (numRows <= 1) return s;
 
   const newRow = new Array(s.length).fill(null); // По времени O(n), по памяти O(n)
@@ -65,45 +67,38 @@ const zigzag_conversion = (s, numRows) => {
 
 const testCases = [
   {
-    input: 'PAYPALISHIRING',
-    numRows: 3,
-    expected: 'PAHNAPLSIIGYIR',
+    case_number: 1,
+    input: {s: 'PAYPALISHIRING', numRows: 3},
+    expect: 'PAHNAPLSIIGYIR',
   },
   {
-    input: 'PAYPALISHIRING',
-    numRows: 4,
-    expected: 'PINALSIGYAHRPI',
+    case_number: 2,
+    input: {s: 'PAYPALISHIRING', numRows: 4},
+    expect: 'PINALSIGYAHRPI',
   },
   {
-    input: 'A',
-    numRows: 1,
-    expected: 'A',
+    case_number: 3,
+    input: {s: 'A', numRows: 1},
+    expect: 'A',
   },
   {
-    input: 'ABCDE',
-    numRows: 4,
-    expected: 'ABCED',
+    case_number: 4,
+    input: {s: 'ABCDE', numRows: 4},
+    expect: 'ABCED',
   },
   {
-    input: 'ABCDE',
-    numRows: 2,
-    expected: 'ACEBD',
+    case_number: 5,
+    input: {s: 'ABCDE', numRows: 2},
+    expect: 'ACEBD',
   },
   {
-    input: 'AB',
-    numRows: 1,
-    expected: 'AB',
+    case_number: 6,
+    input: {s: 'AB', numRows: 1},
+    expect: 'AB',
   },
 ];
-testCases.forEach((element, index) => {
-  const result = zigzag_conversion(element.input, element.numRows);
 
-  console.log({
-    case: index + 1,
-    expect: element.expected,
-    result,
-    conclusion: `Test ${element.expected === result ? 'Passed.' : 'Failed :('}`
-  });
-});
+tester(testCases, zigzag_conversion)
+
 // ПО времени O(n*k) где n-длинна строки, k-кво
 // По памяти тоже O(n*k)
