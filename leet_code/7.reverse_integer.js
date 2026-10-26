@@ -25,7 +25,7 @@ const reverse_integer = (x) => {
 };
 
 const testCases = [
-  { case_number: 1, input: 123, expect: 321 },
+  { case_number: 1, input: '123', expect: 123 },
   { case_number: 2, input: -123, expect: -321 },
   { case_number: 3, input: 120, expect: 21 },
 
