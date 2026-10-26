@@ -127,6 +127,18 @@ const shortest_way_dijkstra = (graph, entryPointKey, endPointKey) => {
     }
   }
 
+  //Проверяем есть ли такая вершина и есть ли до нее путь.
+  const endVertexData = distances.get(endPointKey);
+
+  if (!endVertexData || endVertexData.value === Infinity) {
+    return {
+      distances,
+      path: [],
+      distance: Infinity
+    };
+  }
+
+  //Восстанавливаем путь
   let path = [];
   let current = endPointKey;
   while (current !== null) {
@@ -189,19 +201,6 @@ const graph = {
   ],
 };
 console.log('shortest_way_dijkstra', shortest_way_dijkstra(graph, 'A', 'G'));
-
-// 2. Что произойдёт, если путь не существует?
-// Представь, что ты передашь несуществующую вершину или вершину, до которой нет пути из стартовой. Тогда distances.get(current) может вернуть undefined либо запись с value: Infinity и parent: null.
-
-// Сейчас при несуществующей вершине обращение к currentData.parent вызовет ошибку. А если вершина существует, но недостижима, функция вернёт путь из одной вершины, хотя реального пути нет.
-
-// Нужно предусмотреть эти случаи до восстановления пути.
-// Твоя следующая задача
-// Добавь проверку, которая определяет, достижима ли endPointKey из entryPointKey.
-
-// Подсказка: посмотри на поле value конечной вершины в distances. Если оно осталось Infinity, путь не найден.
-
-// Не переписывай функцию целиком — добавь проверку и пришли изменённый фрагмент.
 
 
 ///-------------PriorityQueue tests -----------------
