@@ -35,6 +35,7 @@
     "basePlus6.5": "node ./base_plus/6.5longest_common_subsequence.js",
     "basePlus7": "node ./base_plus/7.graph",
     "basePlus7.1": "node ./base_plus/7.1dijikstra_alg.js",
+    "basePlus7.2": "node ./base_plus/7.2bfs.js",
 
 
     "practiceBase": "node ./base/practice/1.Sort_practice",
