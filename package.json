@@ -58,7 +58,10 @@
     "leet6": "node ./leet_code/6.zigzag_conversion",
     "leet7": "node ./leet_code/7.reverse_integer",
     "leet8": "node ./leet_code/8.string_to_integer(atoi).js",
-    "leet9": "node ./leet_code/9.palindrome_number"
+    "leet9": "node ./leet_code/9.palindrome_number",
+    "leet10": "node ./leet_code/10.regular_expression_matching.js",
+    "leet11": "node ./leet_code/11.container_with_most_water.js",
+    "leet12": "node ./leet_code/12.integer_to_roman.js"
 
   }
 }
