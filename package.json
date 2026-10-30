@@ -38,7 +38,8 @@
     "basePlus7.2": "node ./base_plus/7.2bfs.js",
     "basePlus7.3": "node ./base_plus/7.3.topological_sort",
     "basePlus8": "node ./base_plus/8.union-find.js",
-    "basePlus9": "node ./base_plus/9.monotonic_stack.js",
+    "basePlus9.1": "node ./base_plus/9.1.monotonic_stack.js",
+    "basePlus9.2": "node ./base_plus/9.2monotonic_queue",
 
 
     "practiceBase": "node ./base/practice/1.Sort_practice",
