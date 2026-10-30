@@ -63,7 +63,8 @@
     "leet9": "node ./leet_code/9.palindrome_number",
     "leet10": "node ./leet_code/10.regular_expression_matching.js",
     "leet11": "node ./leet_code/11.container_with_most_water.js",
-    "leet12": "node ./leet_code/12.integer_to_roman.js"
+    "leet12": "node ./leet_code/12.integer_to_roman.js",
+    "leet13": "node ./leet_code/13.roman_to_integer"
 
   }
 }
